@@ -57,10 +57,66 @@
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_normal_800"
-                app:layout_constraintBottom_toTopOf="@id/button_watch_trailer"
+                app:layout_constraintBottom_toTopOf="@id/textView_release_year"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="Mad Max" />
+
+            <TextView
+                android:id="@+id/textView_release_year"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/height_button_normal_100"
+                android:layout_marginBottom="@dimen/spacing_normal_800"
+                android:background="@drawable/bg_grey_rounded_corner"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/spacing_small_800"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_subtitle_3"
+                app:layout_constraintBottom_toTopOf="@id/button_watch_trailer"
+                app:layout_constraintEnd_toStartOf="@id/textView_language_iso_code"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="2013" />
+
+            <TextView
+                android:id="@+id/textView_language_iso_code"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/height_button_normal_100"
+                android:layout_marginHorizontal="@dimen/spacing_small_800"
+                android:layout_marginBottom="@dimen/spacing_normal_800"
+                android:background="@drawable/bg_grey_rounded_corner"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/spacing_small_800"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_subtitle_3"
+                app:layout_constraintBottom_toTopOf="@id/button_watch_trailer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textView_vote_average"
+                app:layout_constraintStart_toEndOf="@id/textView_release_year"
+                tools:text="en" />
+
+            <TextView
+                android:id="@+id/textView_vote_average"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/height_button_normal_100"
+                android:layout_marginBottom="@dimen/spacing_normal_800"
+                android:background="@drawable/bg_yellow_rounded_corner"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:paddingVertical="@dimen/spacing_small_600"
+                android:paddingStart="@dimen/spacing_small_200"
+                android:paddingEnd="@dimen/spacing_normal_100"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_subtitle_3"
+                app:drawableStartCompat="@drawable/ic_star"
+                app:layout_constraintBottom_toTopOf="@id/button_watch_trailer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toEndOf="@id/textView_language_iso_code"
+                tools:text="8.0" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_watch_trailer"

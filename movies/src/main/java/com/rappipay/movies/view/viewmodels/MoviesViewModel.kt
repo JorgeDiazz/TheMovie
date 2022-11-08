@@ -6,6 +6,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.app.base.interfaces.FlowUseCase
+import com.app.base.others.DEFAULT_DATE_DELIMITER
 import com.app.core.interfaces.AppResources
 import com.rappipay.movies.R
 import com.rappipay.movies.domain.model.Movie
@@ -113,7 +114,7 @@ class MoviesViewModel @Inject constructor(
   private fun PagingData<Movie>.toUiModel(): PagingData<MovieUiModel> = map { it.toUiModel() }
 
   private fun Movie.toUiModel(): MovieUiModel =
-    MovieUiModel(id, backdropPath, originalTitle, title, originalLanguage, overview, popularity, posterPath, voteAverage, type)
+    MovieUiModel(id, backdropPath, originalTitle, title, originalLanguage, overview, popularity, posterPath, voteAverage, releaseDate.substringBefore(DEFAULT_DATE_DELIMITER).toInt(), type)
 
   private fun MoviesFilters.toUiModel(): MoviesFiltersUiModel =
     MoviesFiltersUiModel(

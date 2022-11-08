@@ -15,5 +15,6 @@ data class MovieUiModel(
   val popularity: Double,
   val posterPath: String?,
   val voteAverage: Double,
+  val releaseYear: Int,
   val type: MovieType,
 ) : Parcelable

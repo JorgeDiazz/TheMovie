@@ -10,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import coil.ImageLoader
 import coil.load
-import coil.size.Scale
 import com.app.base.interfaces.Logger
 import com.app.base.others.POSTER_IMAGES_BASE_URL
 import com.rappipay.components.utils.getCircularProgressImageDrawable
@@ -57,6 +56,7 @@ class MovieDetailsFragment : DialogFragment(R.layout.fragment_movie_details) {
     initializeToolbar()
     initializeMoviePosterImage()
     initializeMovieTitle()
+    initializeMovieData()
     initializeMovieOverview()
     initializeWatchTrailerButton()
   }
@@ -71,6 +71,12 @@ class MovieDetailsFragment : DialogFragment(R.layout.fragment_movie_details) {
 
   private fun initializeMovieTitle() {
     binding.textViewMovieTitle.text = movieUiModel.title
+  }
+
+  private fun initializeMovieData() {
+    binding.textViewReleaseYear.text = movieUiModel.releaseYear.toString()
+    binding.textViewLanguageIsoCode.text = movieUiModel.originalLanguage
+    binding.textViewVoteAverage.text = movieUiModel.voteAverage.toString()
   }
 
   private fun initializeMovieOverview() {
