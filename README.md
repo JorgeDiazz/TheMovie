@@ -2,15 +2,21 @@
 
 # Welcome to Android RappiPay Tech Test!
 
-** 1. ¿En qué consiste el principio de responsabilidad única? ¿Cuál es su propósito? ** 
+### 1. ¿En qué consiste el principio de responsabilidad única? ¿Cuál es su propósito?
+
+
 El principio de responsabilidad única hace parte de los principios SOLID, 
 en donde se especifica que clases y métodos deben tener solamente una responsabilidad; y las otras instrucciones que estos deban ejecutar/realizar, 
-se deben delegar a otros métodos y clases. Por ejemplo en este proyecto, teniendo en cuenta la clase CustomToolbar, debe existir solamente las instrucciones que 
+se deben delegar a otros métodos y clases. 
+
+Por ejemplo en este proyecto, teniendo en cuenta la clase CustomToolbar, debe existir solamente las instrucciones que 
 definen las caracteristicas y comportamiento de dicho toolbar; por lo tanto, allí no debe existir lógica de negocio o implementaciones de otros componentes.
 
 Su propósito es facilitar el proceso de desarrollo y entendimiento del proyecto, ya que no se mezclarán comportamientos que puedan aumentar la complejidad y el acoplamiento del código.
 
-** 2. ¿Qué características tiene, según su opinión, un “buen” código o código limpio? **
+### 2. ¿Qué características tiene, según su opinión, un “buen” código o código limpio?
+
+
 Un proyecto que contenga código limpio es:
 
 - Organizado, se tiene clara su estructura de módulos, directorios, clases.
@@ -22,7 +28,9 @@ Un proyecto que contenga código limpio es:
 - Otras personas pueden entender, añadir y modificar código con facilidad. 
 - No contiene código repetido ni código que no se está usando.
 
-** 3. Detalla cómo harías todo aquello que no hayas llegado a completar. **
+### 3. Detalla cómo harías todo aquello que no hayas llegado a completar. 
+
+
 - Analizar memory leaks, revisando los resultados y logs que arroja la biblioteca CanaryLeaks
 - Implementar instrumented tests usando espresso, además de implementar unit tests para los view model. 
 - Implementar la biblioteca Jacoco para medir y tener control sobre el coverage de las pruebas unitarias implementadas
@@ -46,6 +54,7 @@ Furthermore, some libraries and frameworks such as:
 * _Network connectivity interceptor_ for HTTP requests.
 * _Hilt_ for dependencies injection.
 * _Room_ for local storage.
+* _Coil_ for loading and caching images.
 * _Retrofit2_ for API requests.
 * _Paging3_ for local & remote data pagination.
 * _PagingSource_ for pagination orchestration.
@@ -114,15 +123,15 @@ In order to sign your debug app build using _debug-keystore.jks_ keystore, these
 
 <img src="docs/images/1.gif" width="350" height="600"/>
 
-### Upcoming movies with recycler view pagination
+### Upcoming movies supporting pagination
 
 <img src="docs/images/2.gif" width="350" height="600"/>
 
-### Top rated movies with recycler view pagination
+### Top rated movies supporting pagination
 
 <img src="docs/images/3.gif" width="350" height="600"/>
 
-### Suggested movies recycler view uses top rated cached movies and it updates in real-time
+### Suggested movies recycler view uses top rated cached movies to get updates in real-time
 
 <img src="docs/images/4.gif" width="350" height="600"/>
 
@@ -146,7 +155,7 @@ In order to sign your debug app build using _debug-keystore.jks_ keystore, these
 
 <img src="docs/images/9.gif" width="350" height="600"/>
 
-### Retrying movies fetching when recovering Internet connection
+### Retrying movies fetching when Internet connection recovered
 
 <img src="docs/images/10.gif" width="350" height="600"/>
 
