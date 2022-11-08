@@ -171,4 +171,4 @@ In order to sign your debug app build using _debug-keystore.jks_ keystore, these
 
 ### Movie Details Screen in landscape mode
 
-<img src="docs/images/13.gif" width="600" height="350"/>
+<img src="docs/images/13.gif" width="350" height="600"/>
