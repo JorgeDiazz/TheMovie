@@ -9,6 +9,12 @@ import com.rappipay.components.utils.viewBinding
 import com.rappipay.movies.R
 import com.rappipay.movies.databinding.DialogMovieVideoBinding
 
+const val MOVIE_VIDEO_DIALOG_TAG = "MOVIE_VIDEO_DIALOG_TAG"
+
+/**
+ * Represents the dialog where the video is shown up.
+ *
+ */
 class MovieVideoDialog(private val videoKey: String) : DialogFragment(R.layout.dialog_movie_video) {
 
   private val binding by viewBinding(DialogMovieVideoBinding::bind)

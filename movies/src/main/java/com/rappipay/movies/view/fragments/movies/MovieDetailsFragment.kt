@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import coil.ImageLoader
 import coil.load
 import coil.size.Scale
 import com.app.base.interfaces.Logger
@@ -22,7 +23,6 @@ import com.rappipay.movies.view.viewmodels.MovieDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlinx.coroutines.launch
-
 
 /**
  * Represents the detailed information of a given movie.
@@ -56,6 +56,8 @@ class MovieDetailsFragment : DialogFragment(R.layout.fragment_movie_details) {
   private fun initializeView() {
     initializeToolbar()
     initializeMoviePosterImage()
+    initializeMovieTitle()
+    initializeMovieOverview()
     initializeWatchTrailerButton()
   }
 
@@ -67,12 +69,21 @@ class MovieDetailsFragment : DialogFragment(R.layout.fragment_movie_details) {
     }
   }
 
+  private fun initializeMovieTitle() {
+    binding.textViewMovieTitle.text = movieUiModel.title
+  }
+
+  private fun initializeMovieOverview() {
+    binding.textViewOverview.text = movieUiModel.overview
+  }
+
   private fun initializeMoviePosterImage() {
-    binding.imageViewMovie.load(POSTER_IMAGES_BASE_URL + movieUiModel.posterPath) {
+    val imageLoader = ImageLoader.Builder(requireContext()).diskCache(null).memoryCache(null).build()
+
+    binding.imageViewMovie.load(POSTER_IMAGES_BASE_URL + movieUiModel.posterPath, imageLoader) {
       crossfade(true)
       error(R.drawable.ic_no_image_found)
       placeholder(getCircularProgressImageDrawable(requireContext()))
-      scale(Scale.FILL)
     }
   }
 
@@ -103,7 +114,8 @@ class MovieDetailsFragment : DialogFragment(R.layout.fragment_movie_details) {
   }
 
   private fun showMovieVideoDialog(videoKey: String) {
-    MovieVideoDialog(videoKey).show(childFragmentManager, "")
+    (childFragmentManager.findFragmentByTag(MOVIE_VIDEO_DIALOG_TAG) as? DialogFragment)?.dismiss()
+    MovieVideoDialog(videoKey).show(childFragmentManager, MOVIE_VIDEO_DIALOG_TAG)
   }
 
   private fun popFragment() = requireActivity().onBackPressed()

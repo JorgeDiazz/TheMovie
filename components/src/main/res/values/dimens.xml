@@ -65,6 +65,7 @@
     <dimen name="text_size_normal_200">13sp</dimen>
     <dimen name="text_size_normal_400">20sp</dimen>
     <dimen name="text_size_normal_600">26sp</dimen>
+    <dimen name="text_size_normal_800">40sp</dimen>
 
     <!-- Typography -->
     <dimen name="text_size_headline_1">24sp</dimen>

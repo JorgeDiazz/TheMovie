@@ -9,6 +9,7 @@
     <string name="release_year">Año de lanzamiento</string>
 
     <string name="watch_trailer">Ver trailer</string>
+    <string name="movie_plot">Movie plot</string>
 
     <string name="try_again_error">¡Ha ocurrido un error!</string>
     <string name="button_retry">Reintentar</string>
