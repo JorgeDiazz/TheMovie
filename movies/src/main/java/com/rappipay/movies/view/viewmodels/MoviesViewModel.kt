@@ -21,13 +21,13 @@ import com.rappipay.movies.view.uimodel.MovieUiModel
 import com.rappipay.movies.view.uimodel.MoviesFiltersUiModel
 import com.rappipay.movies.view.utils.SPINNER_TITLE_INDEX
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * Represents the ViewModel layer of MoviesFragment.

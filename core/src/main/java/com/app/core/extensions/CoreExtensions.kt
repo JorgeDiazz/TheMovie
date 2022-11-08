@@ -10,5 +10,4 @@ class CoreExtensions {
     fun String.getDisplayLanguage(): String =
       Locale(this).getDisplayLanguage(Locale(DEFAULT_LANGUAGE_ISO_CODE, DEFAULT_COUNTRY_ISO_CODE)).replaceFirstChar { it.uppercase() }
   }
-
 }
