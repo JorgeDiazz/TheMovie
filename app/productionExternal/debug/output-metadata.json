@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.rappipay.app",
+  "variantName": "productionExternalDebug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 1,
+      "versionName": "v1.0-Dirty",
+      "outputFile": "app-production-external-debug.apk"
+    }
+  ],
+  "elementType": "File"
+}

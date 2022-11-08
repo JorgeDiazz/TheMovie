@@ -25,8 +25,8 @@ import com.rappipay.movies.view.uimodel.MovieUiModel
 import com.rappipay.movies.view.uimodel.MoviesFiltersUiModel
 import com.rappipay.movies.view.viewmodels.MoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * Represents the list of movies pulled in from TMDB API.

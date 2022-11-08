@@ -18,11 +18,11 @@ import com.rappipay.movies.exceptions.NoMovieVideosFound
 import com.rappipay.movies.repositories.MoviesPagingSource
 import com.rappipay.movies.room.database.MoviesDatabase
 import com.rappipay.movies.services.IMoviesRemoteDataSource
-import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import java.util.Locale
+import javax.inject.Inject
 
 const val SUGGESTED_MOVIES_DEFAULT_LIMIT = 6
 

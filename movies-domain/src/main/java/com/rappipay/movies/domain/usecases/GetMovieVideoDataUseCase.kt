@@ -3,8 +3,8 @@ package com.rappipay.movies.domain.usecases
 import com.app.base.interfaces.FlowUseCase
 import com.rappipay.movies.domain.model.MovieVideoData
 import com.rappipay.movies.domain.repositories.IMoviesRepository
-import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 /**
  * Represents the use case that gets available movies filters.

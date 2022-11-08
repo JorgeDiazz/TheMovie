@@ -68,7 +68,5 @@ class MoviesAdapter(private val context: Context, private val onClickListener: O
         }
       }
     }
-
-
   }
 }

@@ -22,9 +22,9 @@ import com.rappipay.movies.view.uimodel.MovieUiModel
 import com.rappipay.movies.view.uimodel.MovieVideoDataUiModel
 import com.rappipay.movies.view.viewmodels.MovieDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * Represents the detailed information of a given movie.
