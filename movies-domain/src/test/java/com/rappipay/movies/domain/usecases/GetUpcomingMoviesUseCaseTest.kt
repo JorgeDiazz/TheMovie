@@ -32,7 +32,7 @@ class GetUpcomingMoviesUseCaseTest {
   }
 
   @Test
-  internal fun `Should emit moviesPagingData when getUpcomingMovies is invoked`(): Unit = runTest(UnconfinedTestDispatcher()) {
+  internal fun `Should emit moviesPagingData when GetUpcomingMoviesUseCase is invoked`(): Unit = runTest(UnconfinedTestDispatcher()) {
     // Given
     val moviesList = listOf(mockk<Movie>())
     val moviesPagingData = PagingData.from(moviesList)

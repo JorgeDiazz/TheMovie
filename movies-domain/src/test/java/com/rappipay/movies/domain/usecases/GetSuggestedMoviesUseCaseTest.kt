@@ -43,7 +43,7 @@ class GetSuggestedMoviesUseCaseTest {
 
   @ParameterizedTest
   @MethodSource("source")
-  internal fun `Should emit moviesList when getSuggestedMoviesAvailableMoviesFilters is invoked`(languageIsoCode: String?, releaseYear: Int?): Unit = runTest(UnconfinedTestDispatcher()) {
+  internal fun `Should emit moviesList when GetSuggestedMoviesUseCase is invoked`(languageIsoCode: String?, releaseYear: Int?): Unit = runTest(UnconfinedTestDispatcher()) {
     // Given
     val moviesList = listOf(mockk<Movie>())
 

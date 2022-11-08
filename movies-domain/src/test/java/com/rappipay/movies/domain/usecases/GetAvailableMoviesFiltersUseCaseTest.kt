@@ -31,7 +31,7 @@ class GetAvailableMoviesFiltersUseCaseTest {
   }
 
   @Test
-  internal fun `Should emit moviesPagingData when getUpcomingMovies is invoked`(): Unit = runTest(UnconfinedTestDispatcher()) {
+  internal fun `Should emit moviesFilters when GetAvailableMoviesFiltersUseCase is invoked`(): Unit = runTest(UnconfinedTestDispatcher()) {
     // Given
     val moviesFilters = MoviesFilters(mockk(), mockk())
 

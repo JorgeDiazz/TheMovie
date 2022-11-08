@@ -2,6 +2,7 @@ package com.rappipay.movies.view.fragments.movies
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
@@ -16,11 +17,13 @@ import com.rappipay.components.utils.getCircularProgressImageDrawable
 import com.rappipay.components.utils.viewBinding
 import com.rappipay.movies.R
 import com.rappipay.movies.databinding.FragmentMovieDetailsBinding
+import com.rappipay.movies.view.states.MovieDetailsState
 import com.rappipay.movies.view.uimodel.MovieUiModel
 import com.rappipay.movies.view.uimodel.MovieVideoDataUiModel
 import com.rappipay.movies.view.viewmodels.MovieDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 /**
@@ -50,6 +53,7 @@ class MovieDetailsFragment : DialogFragment(R.layout.fragment_movie_details) {
 
     initializeView()
     initializeObservers()
+    initializeNewsSubscription()
   }
 
   private fun initializeView() {
@@ -116,6 +120,22 @@ class MovieDetailsFragment : DialogFragment(R.layout.fragment_movie_details) {
   private fun observeMovieVideoData(movieVideoDataUiModel: MovieVideoDataUiModel) {
     movieVideoDataUiModel.videoKey?.let {
       showMovieVideoDialog(it)
+    }
+  }
+
+  private fun initializeNewsSubscription() {
+    lifecycleScope.launch {
+      repeatOnLifecycle(Lifecycle.State.STARTED) {
+        viewModel.newsSharedFlow.collectLatest { movieDetailStateNews ->
+          handleNews(movieDetailStateNews)
+        }
+      }
+    }
+  }
+
+  private fun handleNews(news: MovieDetailsState) {
+    when (news) {
+      is MovieDetailsState.Error -> Toast.makeText(requireContext(), news.errorMessage, Toast.LENGTH_SHORT).show()
     }
   }
 
