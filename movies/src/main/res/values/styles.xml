@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <style name="Widget.App.ButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/BlueButtonThemeOverlay</item>
+    </style>
+
+    <style name="BlueButtonThemeOverlay">
+        <item name="colorPrimary">@color/blue_dark</item>
+    </style>
+
+    <style name="FullScreenDialogStyle">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+</resources>

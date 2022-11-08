@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@+id/start"
+        motion:duration="1000">
+        <OnClick
+            motion:dragDirection="dragRight"
+            motion:touchAnchorId="@+id/button"
+            motion:touchAnchorSide="right" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/textView_error"
+            android:visibility="gone"
+            motion:visibilityMode="ignore" />
+        <Constraint
+            android:id="@+id/button_retry"
+            android:visibility="gone"
+            motion:visibilityMode="ignore" />
+
+        <Constraint
+            android:id="@+id/progressBar_loader"
+            android:maxWidth="@dimen/width_icon_small_100"
+            android:maxHeight="@dimen/height_icon_small_100"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:visibilityMode="normal" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+
+        <Constraint
+            android:id="@+id/textView_error"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toTopOf="@+id/button_retry"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:visibilityMode="normal" />
+        <Constraint
+            android:id="@+id/button_retry"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/textView_error"
+            motion:visibilityMode="normal" />
+
+        <Constraint
+            android:id="@+id/progressBar_loader"
+            android:visibility="gone"
+            motion:visibilityMode="ignore" />
+    </ConstraintSet>
+
+</MotionScene>
