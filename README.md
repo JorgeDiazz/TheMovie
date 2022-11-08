@@ -164,3 +164,7 @@ In order to sign your debug app build using _debug-keystore.jks_ keystore, these
 ### Movie Details Screen (offline mode)
 
 <img src="docs/images/11.gif" width="350" height="600"/>
+
+### Landscape mode persisting screen state (selected filters)
+
+<img src="docs/images/12.gif" width="350" height="600"/>

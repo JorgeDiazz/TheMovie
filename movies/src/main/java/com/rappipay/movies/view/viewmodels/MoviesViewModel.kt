@@ -7,6 +7,7 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import com.app.base.interfaces.FlowUseCase
 import com.app.base.others.DEFAULT_DATE_DELIMITER
+import com.app.core.extensions.CoreExtensions.Companion.getDisplayLanguage
 import com.app.core.interfaces.AppResources
 import com.rappipay.movies.R
 import com.rappipay.movies.domain.model.Movie
@@ -20,13 +21,13 @@ import com.rappipay.movies.view.uimodel.MovieUiModel
 import com.rappipay.movies.view.uimodel.MoviesFiltersUiModel
 import com.rappipay.movies.view.utils.SPINNER_TITLE_INDEX
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * Represents the ViewModel layer of MoviesFragment.
@@ -55,8 +56,8 @@ class MoviesViewModel @Inject constructor(
 
   private var suggestedMoviesJob: Job? = null
 
-  private var currentLanguageIndex: Int = -1
-  private var currentReleaseYearIndex: Int = -1
+  private var currentLanguageIndex: Int = SPINNER_TITLE_INDEX
+  private var currentReleaseYearIndex: Int = SPINNER_TITLE_INDEX
 
   fun onViewActive() {
     loadUpcomingMovies()
@@ -83,7 +84,7 @@ class MoviesViewModel @Inject constructor(
       }
   }
 
-  fun loadSuggestedMovies(languageIndex: Int = SPINNER_TITLE_INDEX, releaseYearIndex: Int = SPINNER_TITLE_INDEX) {
+  fun loadSuggestedMovies(languageIndex: Int = -1, releaseYearIndex: Int = -1) {
     suggestedMoviesJob?.cancel()
 
     suggestedMoviesJob = viewModelScope.launch {
@@ -118,7 +119,9 @@ class MoviesViewModel @Inject constructor(
 
   private fun MoviesFilters.toUiModel(): MoviesFiltersUiModel =
     MoviesFiltersUiModel(
-      listOf(MovieLanguage(languageName = appResources.getString(R.string.language))) + languagesList,
-      listOf(appResources.getString(R.string.release_year)) + releaseYearsList.map { it.toString() }
+      languagesList = listOf(MovieLanguage(languageName = appResources.getString(R.string.language))) + languagesList,
+      languageSelectedItem = _moviesFiltersStateFlow.value.languagesList.getOrNull(currentLanguageIndex)?.languageIsoCode?.getDisplayLanguage().orEmpty(),
+      releaseYearsList = listOf(appResources.getString(R.string.release_year)) + releaseYearsList.map { it.toString() },
+      releaseYearSelectedItem = _moviesFiltersStateFlow.value.releaseYearsList.getOrNull(currentReleaseYearIndex).orEmpty()
     )
 }

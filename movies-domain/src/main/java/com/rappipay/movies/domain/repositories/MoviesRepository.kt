@@ -4,9 +4,8 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.app.base.others.DEFAULT_COUNTRY_ISO_CODE
 import com.app.base.others.DEFAULT_DATE_DELIMITER
-import com.app.base.others.DEFAULT_LANGUAGE_ISO_CODE
+import com.app.core.extensions.CoreExtensions.Companion.getDisplayLanguage
 import com.app.core.network.BaseApiResponse
 import com.rappipay.movies.domain.model.Movie
 import com.rappipay.movies.domain.model.MovieLanguage
@@ -18,11 +17,10 @@ import com.rappipay.movies.exceptions.NoMovieVideosFound
 import com.rappipay.movies.repositories.MoviesPagingSource
 import com.rappipay.movies.room.database.MoviesDatabase
 import com.rappipay.movies.services.IMoviesRemoteDataSource
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
-import java.util.Locale
-import javax.inject.Inject
 
 const val SUGGESTED_MOVIES_DEFAULT_LIMIT = 6
 
@@ -60,7 +58,7 @@ class MoviesRepository @Inject constructor(
 
       topRatedMovies.forEach { movieRoom ->
         val languageIsoCode = movieRoom.originalLanguage
-        val languageName = Locale(languageIsoCode).getDisplayLanguage(Locale(DEFAULT_LANGUAGE_ISO_CODE, DEFAULT_COUNTRY_ISO_CODE)).replaceFirstChar { it.uppercase() }
+        val languageName = languageIsoCode.getDisplayLanguage()
         val movieLanguage = MovieLanguage(languageIsoCode, languageName)
 
         languagesSet.add(movieLanguage)

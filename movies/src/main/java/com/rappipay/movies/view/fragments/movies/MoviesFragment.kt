@@ -25,8 +25,8 @@ import com.rappipay.movies.view.uimodel.MovieUiModel
 import com.rappipay.movies.view.uimodel.MoviesFiltersUiModel
 import com.rappipay.movies.view.viewmodels.MoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 /**
  * Represents the list of movies pulled in from TMDB API.
@@ -187,29 +187,25 @@ class MoviesFragment : Fragment(R.layout.fragment_movies), MoviesAdapter.OnClick
 
   private fun observeMoviesFilters(moviesFiltersUiModel: MoviesFiltersUiModel) {
     moviesFiltersUiModel.run {
-      updateMoviesLanguageArrayAdapterContent(languagesList.map { it.languageName })
-      updateMoviesReleaseYearArrayAdapterContent(releaseYearsList)
+      updateMoviesLanguageArrayAdapterContent(languagesList.map { it.languageName }, languageSelectedItem)
+      updateMoviesReleaseYearArrayAdapterContent(releaseYearsList, releaseYearSelectedItem)
     }
   }
 
-  private fun updateMoviesLanguageArrayAdapterContent(languagesList: List<String>) {
-    val currentLanguageSelected = moviesLanguageSpinner.selectedItem as String?
-
+  private fun updateMoviesLanguageArrayAdapterContent(languagesList: List<String>, languageSelectedItem: String) {
     moviesLanguageArrayAdapter.clear()
     moviesLanguageArrayAdapter.addAll(languagesList)
 
-    val newLanguageIndex = moviesLanguageArrayAdapter.getPosition(currentLanguageSelected)
-    moviesLanguageSpinner.setSelection(newLanguageIndex)
+    val itemSelectedIndex = if (languageSelectedItem.isEmpty()) 0 else languagesList.indexOf(languageSelectedItem)
+    moviesLanguageSpinner.setSelection(itemSelectedIndex)
   }
 
-  private fun updateMoviesReleaseYearArrayAdapterContent(releaseYearsList: List<String>) {
-    val currentReleaseYearSelected = moviesReleaseYearSpinner.selectedItem as String?
-
+  private fun updateMoviesReleaseYearArrayAdapterContent(releaseYearsList: List<String>, releaseYearSelectedItem: String) {
     moviesReleaseYearArrayAdapter.clear()
     moviesReleaseYearArrayAdapter.addAll(releaseYearsList)
 
-    val newReleaseYearIndex = moviesReleaseYearArrayAdapter.getPosition(currentReleaseYearSelected)
-    moviesReleaseYearSpinner.setSelection(newReleaseYearIndex)
+    val itemSelectedIndex = if (releaseYearSelectedItem.isEmpty()) 0 else releaseYearsList.indexOf(releaseYearSelectedItem)
+    moviesReleaseYearSpinner.setSelection(itemSelectedIndex)
   }
 
   override fun onMovieClick(movieUiModel: MovieUiModel) {
