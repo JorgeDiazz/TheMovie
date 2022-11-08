@@ -50,14 +50,14 @@ android {
       manifestPlaceholders["scheme"] = "rappipay.staging"
       buildConfigField("String", "SCHEME", "\"${manifestPlaceholders["scheme"]}\"")
       buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/\"")
-      buildConfigField("String", "API_KEY", "\"${gradleLocalProperties(rootDir).getProperty("API_KEY")}\"")
+      buildConfigField("String", "TMDB_API_KEY", "\"${gradleLocalProperties(rootDir).getProperty("TMDB_API_KEY")}\"")
     }
     create("production") {
       dimension = "version"
       manifestPlaceholders["scheme"] = "rappipay.production"
       buildConfigField("String", "SCHEME", "\"${manifestPlaceholders["scheme"]}\"")
       buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/\"")
-      buildConfigField("String", "API_KEY", "\"${gradleLocalProperties(rootDir).getProperty("API_KEY")}\"")
+      buildConfigField("String", "TMDB_API_KEY", "\"${gradleLocalProperties(rootDir).getProperty("TMDB_API_KEY")}\"")
     }
     create("internal") {
       dimension = "target"

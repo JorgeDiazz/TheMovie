@@ -24,7 +24,7 @@
     <dimen name="height_button_small_100">25dp</dimen>
     <dimen name="height_button_normal_100">28dp</dimen>
     <dimen name="height_button_normal_200">40dp</dimen>
-    <dimen name="height_button_normal_400">49dp</dimen>
+    <dimen name="height_button_normal_400">46dp</dimen>
     <dimen name="height_button_normal_600">60dp</dimen>
     <dimen name="height_button_normal_800">70dp</dimen>
 

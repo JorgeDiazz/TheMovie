@@ -10,16 +10,19 @@ import com.app.base.others.DEFAULT_LANGUAGE_ISO_CODE
 import com.app.core.network.BaseApiResponse
 import com.rappipay.movies.domain.model.Movie
 import com.rappipay.movies.domain.model.MovieLanguage
+import com.rappipay.movies.domain.model.MovieVideoData
 import com.rappipay.movies.domain.model.MoviesFilters
 import com.rappipay.movies.domain.model.toBaseModel
 import com.rappipay.movies.entities.local.movies.MovieTypeRoom
+import com.rappipay.movies.exceptions.NoMovieVideosFound
 import com.rappipay.movies.repositories.MoviesPagingSource
 import com.rappipay.movies.room.database.MoviesDatabase
 import com.rappipay.movies.services.IMoviesRemoteDataSource
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import java.util.Locale
-import javax.inject.Inject
 
 const val SUGGESTED_MOVIES_DEFAULT_LIMIT = 6
 
@@ -79,5 +82,11 @@ class MoviesRepository @Inject constructor(
     return moviesDatabase.getMoviesDao().getMoviesByTypeAndLanguageIsoCodeAndReleaseYear(
       MovieTypeRoom.TOP_RATED, languageIsoCodeQuery, releaseYearQuery, SUGGESTED_MOVIES_DEFAULT_LIMIT
     ).map { suggestedMovies -> suggestedMovies.map { it.toBaseModel() } }
+  }
+
+  override fun getMovieVideoData(movieId: Int): Flow<MovieVideoData> = flow {
+    val movieVideosDataListRemote = moviesRemoteDataSource.fetchMovieVideosData(movieId).data
+    val movieVideosData = movieVideosDataListRemote?.results?.firstOrNull()?.toBaseModel() ?: throw NoMovieVideosFound()
+    emit(movieVideosData)
   }
 }

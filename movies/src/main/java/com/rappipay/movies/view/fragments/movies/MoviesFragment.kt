@@ -6,7 +6,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -25,8 +25,8 @@ import com.rappipay.movies.view.uimodel.MovieUiModel
 import com.rappipay.movies.view.uimodel.MoviesFiltersUiModel
 import com.rappipay.movies.view.viewmodels.MoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 /**
  * Represents the list of movies pulled in from TMDB API.
@@ -38,7 +38,7 @@ class MoviesFragment : Fragment(R.layout.fragment_movies), MoviesAdapter.OnClick
   @Inject
   lateinit var logger: Logger
 
-  private val viewModel by activityViewModels<MoviesViewModel>()
+  private val viewModel by viewModels<MoviesViewModel>()
   private val binding by viewBinding(FragmentMoviesBinding::bind)
 
   private lateinit var upcomingMoviesRecyclerView: RecyclerView

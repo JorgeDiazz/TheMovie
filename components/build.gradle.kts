@@ -34,6 +34,8 @@ dependencies {
   implementation(Libraries.constraintLayout)
   implementation(Libraries.material)
 
+  implementation(Libraries.swipeRefreshLayout)
+
   Libraries.suiteTest.forEach { testImplementation(it) }
 
   androidTestImplementation(Libraries.jUnitExtKtx)

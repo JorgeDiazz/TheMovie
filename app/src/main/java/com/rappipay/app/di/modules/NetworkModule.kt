@@ -67,7 +67,7 @@ object NetworkModule {
     loggingInterceptor: Interceptor,
     logger: Logger
   ): OkHttpClient {
-    val serverInterceptor = ServerInterceptor(logger, BuildConfig.API_KEY)
+    val serverInterceptor = ServerInterceptor(logger, BuildConfig.TMDB_API_KEY)
 
     return builder
       .addInterceptor(serverInterceptor)

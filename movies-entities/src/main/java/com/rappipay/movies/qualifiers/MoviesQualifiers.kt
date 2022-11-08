@@ -13,3 +13,6 @@ annotation class GetAvailableMoviesFilters
 
 @Qualifier
 annotation class GetSuggestedMovies
+
+@Qualifier
+annotation class GetMovieVideoData

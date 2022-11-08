@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.annotation.MenuRes
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.rappipay.components.R
@@ -21,7 +20,6 @@ class CustomToolbar @JvmOverloads constructor(
   var toolbarMenuId = -1
 
   private val binding: CustomToolbarBinding
-  private var isDarkTheme: Boolean = false
   private val padding = resources.getDimensionPixelSize(R.dimen.spacing_normal_600)
 
   init {
@@ -38,7 +36,7 @@ class CustomToolbar @JvmOverloads constructor(
     val showBackButton = attributes.getBoolean(R.styleable.CustomToolbar_showBackButton, false)
     setBackButton(showBackButton)
 
-    styleToolbarWithLightTheme()
+    styleToolbar()
 
     attributes.recycle()
   }
@@ -52,40 +50,27 @@ class CustomToolbar @JvmOverloads constructor(
     }
   }
 
-  fun setToolbarMenu(@MenuRes menuId: Int) {
-    toolbar.menu.clear()
-    toolbar.inflateMenu(menuId)
-    toolbarMenuId = menuId
-    setPaddingForToolbar()
-  }
-
-  fun setTitle(title: String?) {
-    setPaddingForToolbar()
-    toolbar.title = title.orEmpty()
-  }
-
-  fun setOnMenuItemClickListener(listener: Toolbar.OnMenuItemClickListener) {
-    toolbar.setOnMenuItemClickListener(listener)
-  }
-
-  fun styleToolbarWithLightTheme() {
-    isDarkTheme = false
+  private fun styleToolbar() {
     setPaddingForToolbar()
     setBackgroundResource(R.color.white)
-    toolbar.setTitleTextAppearance(context, R.style.CustomToolbarTitleTextAppearance_Dark)
-    toolbar.navigationIcon?.setTint(ContextCompat.getColor(context, R.color.blue_dark))
+
+    toolbar.navigationIcon?.setTint(ContextCompat.getColor(context, R.color.white))
+    toolbar.title = ""
+
     invalidate()
     requestLayout()
   }
 
   fun setBackButton(show: Boolean) {
     setPaddingForToolbar()
+
     toolbar.navigationIcon =
       if (show) ContextCompat.getDrawable(context, R.drawable.ic_arrow_back) else null
+
     toolbar.navigationIcon?.setTint(
       ContextCompat.getColor(
         context,
-        if (isDarkTheme) android.R.color.white else R.color.blue_dark
+        android.R.color.white
       )
     )
   }

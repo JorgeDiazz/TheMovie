@@ -1,5 +1,8 @@
 package com.app.base.others
 
+// Movies' videos platform
+const val YOUTUBE = "YouTube"
+
 // Base url
 const val POSTER_IMAGES_BASE_URL = "https://image.tmdb.org/t/p/w500"
 

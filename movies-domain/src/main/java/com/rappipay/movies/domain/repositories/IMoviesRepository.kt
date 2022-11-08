@@ -3,6 +3,7 @@ package com.rappipay.movies.domain.repositories
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.rappipay.movies.domain.model.Movie
+import com.rappipay.movies.domain.model.MovieVideoData
 import com.rappipay.movies.domain.model.MoviesFilters
 import com.rappipay.movies.repositories.MoviesPagingSource
 import kotlinx.coroutines.flow.Flow
@@ -27,4 +28,6 @@ interface IMoviesRepository {
   fun getAvailableMoviesFilters(): Flow<MoviesFilters>
 
   fun getSuggestedMoviesAvailableMoviesFilters(languageIsoCode: String?, releaseYear: Int?): Flow<List<Movie>>
+
+  fun getMovieVideoData(movieId: Int): Flow<MovieVideoData>
 }
