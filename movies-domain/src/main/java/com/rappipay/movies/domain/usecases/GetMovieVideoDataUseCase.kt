@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 /**
- * Represents the use case that gets available movies filters.
+ * Represents the use case that gets information to access movies' trailers.
  *
  */
 class GetMovieVideoDataUseCase @Inject constructor(

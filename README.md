@@ -27,6 +27,8 @@ Un proyecto que contenga código limpio es:
 - Posee unit testing en los puntos críticos e importantes del sistema. 
 - Otras personas pueden entender, añadir y modificar código con facilidad. 
 - No contiene código repetido ni código que no se está usando.
+- Está mantenido por analizadores de código estático y linters.
+- Posee documentación en los sitios más importantes del sistema. 
 
 ### 3. Detalla cómo harías todo aquello que no hayas llegado a completar. 
 
