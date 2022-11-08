@@ -165,6 +165,10 @@ In order to sign your debug app build using _debug-keystore.jks_ keystore, these
 
 <img src="docs/images/11.gif" width="350" height="600"/>
 
-### Landscape mode persisting screen state (selected filters)
+### Persisting screen state (selected filters) in landscape mode 
 
 <img src="docs/images/12.gif" width="350" height="600"/>
+
+### Movie Details Screen in landscape mode
+
+<img src="docs/images/13.gif" width="600" height="350"/>
