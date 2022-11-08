@@ -42,7 +42,6 @@ Un proyecto que contenga código limpio es:
 - Si la información de los endpoints de movies varía, implementar un background service usando WorkManager para actualizar caché.
 - Mostrar un layout específico para el caso de que los filtros seleccionados no posean movies asociadas (no hay resultados para los filtros seleccionados). 
 - Mostrar un layout específico para cuando el dispositivo no tenga conexión a internet, así se retroalimenta al usuario y se le da la opción de recargar la información.
-- Actualizar las funciones deprecated en build.gradle, buscando sus alternativas.
 
 ## What's included
 
@@ -56,6 +55,7 @@ Furthermore, some libraries and frameworks such as:
 * _Network connectivity interceptor_ for HTTP requests.
 * _Hilt_ for dependencies injection.
 * _Room_ for local storage.
+* _Navigation Component_ as app navigation framework.
 * _Coil_ for loading and caching images.
 * _Retrofit2_ for API requests.
 * _Paging3_ for local & remote data pagination.

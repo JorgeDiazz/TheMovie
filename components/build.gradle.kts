@@ -5,12 +5,13 @@ plugins {
 }
 
 android {
-  compileSdkVersion(Api.compileSDK)
+  compileSdk = Api.compileSDK
   defaultConfig {
-    minSdkVersion(Api.minSDK)
-    targetSdkVersion(Api.targetSDK)
+    minSdk = Api.minSDK
+    targetSdk = Api.targetSDK
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
+
   lint {
     abortOnError = false
   }
@@ -35,9 +36,4 @@ dependencies {
   implementation(Libraries.material)
 
   implementation(Libraries.swipeRefreshLayout)
-
-  Libraries.suiteTest.forEach { testImplementation(it) }
-
-  androidTestImplementation(Libraries.jUnitExtKtx)
-  androidTestImplementation(Libraries.espressoCore)
 }

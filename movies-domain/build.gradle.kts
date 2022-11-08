@@ -32,7 +32,6 @@ android {
 }
 
 dependencies {
-
   implementation(Libraries.kotlinJDK)
 
   implementation(project(":base"))
@@ -40,11 +39,6 @@ dependencies {
   implementation(project(":movies-entities"))
 
   implementation(Libraries.paging)
-
-  implementation(Libraries.roomRuntime)
-  implementation(Libraries.roomKtx)
-  implementation(Libraries.roomPaging)
-  kapt(Libraries.roomCompiler)
 
   implementation(AnnotationProcessors.daggerHilt)
   kapt(AnnotationProcessors.daggerHiltAndroidCompiler)

@@ -11,11 +11,11 @@ plugins {
 }
 
 android {
-  compileSdkVersion(Api.compileSDK)
+  compileSdk = Api.compileSDK
   defaultConfig {
     applicationId = "com.rappipay.app"
-    minSdkVersion(Api.minSDK)
-    targetSdkVersion(Api.targetSDK)
+    minSdk = Api.minSDK
+    targetSdk = Api.targetSDK
     versionCode = getNewVersionCode()
     versionName = getNewVersionName()
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -41,7 +41,7 @@ android {
     }
   }
 
-  flavorDimensions("version", "target")
+  flavorDimensions.addAll(listOf("version", "target"))
   productFlavors {
     create("staging") {
       dimension = "version"
@@ -66,10 +66,14 @@ android {
       dimension = "target"
     }
 
-    variantFilter {
-      val names = flavors.map { it.name }
-      if (names.contains("external") && names.contains("staging")) {
-        ignore = true
+    androidComponents {
+      beforeVariants { variantBuilder ->
+        val version = variantBuilder.productFlavors.find { it.first == "version" }?.second
+        val target = variantBuilder.productFlavors.find { it.first == "target" }?.second
+
+        if (version == "staging" && target == "external") {
+          variantBuilder.enable = false
+        }
       }
     }
   }

@@ -31,7 +31,6 @@ android {
 }
 
 dependencies {
-
   implementation(project(":components"))
   implementation(project(":core"))
   implementation(project(":base"))
@@ -58,8 +57,6 @@ dependencies {
 
   implementation(Libraries.coil)
 
-  implementation(Libraries.seeMoreTextView)
-
   implementation(AnnotationProcessors.daggerHilt)
   kapt(AnnotationProcessors.daggerHiltAndroidCompiler)
   implementation(AnnotationProcessors.daggerHiltViewModel)
@@ -73,7 +70,7 @@ dependencies {
   implementation(Libraries.moshi)
   kapt(AnnotationProcessors.moshiCodegen)
 
-  implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
+  implementation(Libraries.youTubePlayer)
 
   androidTestImplementation(Libraries.jUnitExtKtx)
   androidTestImplementation(Libraries.espressoCore)

@@ -1,14 +1,13 @@
 plugins {
   id("com.android.library")
-  id("de.mannodermaus.android-junit5")
   kotlin("android")
 }
 
 android {
-  compileSdkVersion(Api.compileSDK)
+  compileSdk = Api.compileSDK
   defaultConfig {
-    minSdkVersion(Api.minSDK)
-    targetSdkVersion(Api.targetSDK)
+    minSdk = Api.minSDK
+    targetSdk = Api.targetSDK
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
 
@@ -27,10 +26,6 @@ dependencies {
   implementation(Libraries.multidex)
 
   implementation(Libraries.kotlinJDK)
-  implementation(Libraries.appcompat)
-  implementation(Libraries.androidXCore)
-  implementation(Libraries.constraintLayout)
-  implementation(Libraries.recyclerView)
 
   implementation(Libraries.retrofit)
   implementation(Libraries.retrofitMoshi)
@@ -39,9 +34,4 @@ dependencies {
   implementation(Libraries.moshi)
 
   implementation(Libraries.javaInject)
-
-  Libraries.suiteTest.forEach { testImplementation(it) }
-
-  androidTestImplementation(Libraries.jUnitExtKtx)
-  androidTestImplementation(Libraries.espressoCore)
 }
