@@ -7,9 +7,8 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
@@ -25,8 +24,8 @@ import com.rappipay.movies.view.uimodel.MovieUiModel
 import com.rappipay.movies.view.uimodel.MoviesFiltersUiModel
 import com.rappipay.movies.view.viewmodels.MoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 /**
  * Represents the list of movies pulled in from TMDB API.
@@ -131,40 +130,32 @@ class MoviesFragment : Fragment(R.layout.fragment_movies), MoviesAdapter.OnClick
 
   private fun initializeUpcomingMoviesObserver() {
     lifecycleScope.launch {
-      repeatOnLifecycle(Lifecycle.State.STARTED) {
-        viewModel.upcomingMoviesPagingStateFlow.collect { upcomingMoviesPagingData ->
-          observeUpcomingMoviesPagingData(upcomingMoviesPagingData)
-        }
+      viewModel.upcomingMoviesPagingStateFlow.flowWithLifecycle(lifecycle).collect { upcomingMoviesPagingData ->
+        observeUpcomingMoviesPagingData(upcomingMoviesPagingData)
       }
     }
   }
 
   private fun initializeTopRatedMoviesObserver() {
     lifecycleScope.launch {
-      repeatOnLifecycle(Lifecycle.State.STARTED) {
-        viewModel.topRatedMoviesPagingStateFlow.collect { topRatedMoviesPagingData ->
-          observeTopRatedMoviesPagingData(topRatedMoviesPagingData)
-        }
+      viewModel.topRatedMoviesPagingStateFlow.flowWithLifecycle(lifecycle).collect { topRatedMoviesPagingData ->
+        observeTopRatedMoviesPagingData(topRatedMoviesPagingData)
       }
     }
   }
 
   private fun initializeMoviesFiltersObserver() {
     lifecycleScope.launch {
-      repeatOnLifecycle(Lifecycle.State.STARTED) {
-        viewModel.moviesFiltersStateFlow.collect { moviesFiltersUiModel ->
-          observeMoviesFilters(moviesFiltersUiModel)
-        }
+      viewModel.moviesFiltersStateFlow.flowWithLifecycle(lifecycle).collect { moviesFiltersUiModel ->
+        observeMoviesFilters(moviesFiltersUiModel)
       }
     }
   }
 
   private fun initializeSuggestedMoviesObserver() {
     lifecycleScope.launch {
-      repeatOnLifecycle(Lifecycle.State.STARTED) {
-        viewModel.suggestedMoviesPagingStateFlow.collect { suggestedMoviesPagingData ->
-          observeSuggestedMoviesList(suggestedMoviesPagingData)
-        }
+      viewModel.suggestedMoviesPagingStateFlow.flowWithLifecycle(lifecycle).collect { suggestedMoviesPagingData ->
+        observeSuggestedMoviesList(suggestedMoviesPagingData)
       }
     }
   }

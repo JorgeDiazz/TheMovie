@@ -6,9 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import coil.ImageLoader
 import coil.load
 import com.app.base.interfaces.Logger
@@ -22,9 +21,9 @@ import com.rappipay.movies.view.uimodel.MovieUiModel
 import com.rappipay.movies.view.uimodel.MovieVideoDataUiModel
 import com.rappipay.movies.view.viewmodels.MovieDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * Represents the detailed information of a given movie.
@@ -109,10 +108,8 @@ class MovieDetailsFragment : DialogFragment(R.layout.fragment_movie_details) {
 
   private fun initializeMovieVideoDataObserver() {
     lifecycleScope.launch {
-      repeatOnLifecycle(Lifecycle.State.STARTED) {
-        viewModel.movieVideoDataSharedFlow.collect { movieVideoDataUiModel ->
-          observeMovieVideoData(movieVideoDataUiModel)
-        }
+      viewModel.movieVideoDataSharedFlow.flowWithLifecycle(lifecycle).collect { movieVideoDataUiModel ->
+        observeMovieVideoData(movieVideoDataUiModel)
       }
     }
   }
@@ -125,10 +122,8 @@ class MovieDetailsFragment : DialogFragment(R.layout.fragment_movie_details) {
 
   private fun initializeNewsSubscription() {
     lifecycleScope.launch {
-      repeatOnLifecycle(Lifecycle.State.STARTED) {
-        viewModel.newsSharedFlow.collectLatest { movieDetailStateNews ->
-          handleNews(movieDetailStateNews)
-        }
+      viewModel.newsSharedFlow.flowWithLifecycle(lifecycle).collectLatest { movieDetailStateNews ->
+        handleNews(movieDetailStateNews)
       }
     }
   }
